@@ -27,6 +27,45 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = ['*']
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "http://127.0.0.1:8000",
+#    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+    "http://localhost:19002",
+#    "http://127.0.0.1:19006",
+    "http://localhost:19006",
+
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+
+
 
 # Application definition
 
@@ -41,6 +80,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +91,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'back_app.urls'
